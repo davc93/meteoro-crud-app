@@ -1,15 +1,7 @@
 import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
 import { initializeApp } from "firebase/app";
 import {getAuth, signInWithEmailAndPassword, connectAuthEmulator, createUserWithEmailAndPassword,onAuthStateChanged,signOut} from 'firebase/auth';
-const firebaseConfig = {
-  apiKey: "AIzaSyD3UECePpG4pyM-oE2iPIJxXjdlJG9GyFQ",
-  authDomain: "desarrollo-web-308421.firebaseapp.com",
-  projectId: "desarrollo-web-308421",
-  storageBucket: "desarrollo-web-308421.appspot.com",
-  messagingSenderId: "462116199377",
-  appId: "1:462116199377:web:e664c449fefcabffbc1ef0",
-  measurementId: "G-CXN4RVLGKK"
-};
+import { firebaseConfig } from '../../../secret';
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
