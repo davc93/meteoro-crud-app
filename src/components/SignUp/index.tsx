@@ -1,39 +1,56 @@
 import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
 import { initializeApp } from "firebase/app";
-import {getAuth, signInWithEmailAndPassword, connectAuthEmulator, createUserWithEmailAndPassword,onAuthStateChanged,signOut} from 'firebase/auth';
-import {firebaseConfig} from '../../../secret'
+import { getAuth, signInWithEmailAndPassword, connectAuthEmulator, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from 'firebase/auth';
+import { firebaseConfig } from '../../../secret'
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-console.log('hello firebase',firebaseConfig);
-function SignUp(props:any) {
 
-  const createUser = async (auth:any, email:string,password:string) => {
+function SignUp(props: any) {
+
+  const logOut = () => {
+    const auth = getAuth();
+    signOut(auth).then(() => {
+      // Sign-out successful.
+    }).catch((error) => {
+      // An error happened.
+    });
+
+  }
+
+  const signUp = async (e: any) => {
+    e.preventDefault();
+    const email = document.getElementById('email1');
+    const password = document.getElementById('password1');
 
     try {
-      const userCredentials = await createUserWithEmailAndPassword(auth,email,password);
-      const user = userCredentials.user; 
-      console.log('userCredentials',userCredentials);
-      console.log('user',user);        
+      const userCredentials = await createUserWithEmailAndPassword(auth, email.value, password.value);
+      const user = userCredentials.user;
+      console.log('userCredentials', userCredentials);
+      console.log('user', user);
     } catch (error) {
       console.log(error);
     }
-
   }
-  const getData = (ev:any) =>{
-    ev.preventDefault();
-    const email = document.getElementById('email1')
-    const password = document.getElementById('password1')
-    if(email){
-      let emailValue =  email as HTMLFormElement
-      emailValue = emailValue.value
-      console.log(emailValue)
+  const signIn = async (e: any) => {
+    e.preventDefault();
+    const email = document.getElementById('email1');
+    const password = document.getElementById('password1');
+
+    try {
+      const userCredentials = await signInWithEmailAndPassword(auth, email.value, password.value);
+      const user = userCredentials.user;
+      alert(`Hola ${user.email}`)
+      console.log('userCredentials', userCredentials);
+      console.log('user', user);
+    } catch (error) {
+      console.log(error);
     }
   }
 
   return (
-    <form className="flex flex-col gap-4 w-60 lg:w-1/2" onSubmit={getData}>
+    <form className="flex flex-col gap-4 w-60 lg:w-1/2">
       <div>
         <div className="mb-2 block">
           <Label
@@ -67,8 +84,14 @@ function SignUp(props:any) {
           Remember me
         </Label>
       </div>
-      <Button type="submit">
-        Submit
+      <Button type="submit" onClick={signUp}>
+        Sign Up
+      </Button>
+      <Button type="submit" onClick={signIn}>
+        Sign In
+      </Button>
+      <Button type="submit" onClick={logOut}>
+        Log Out
       </Button>
     </form>
 
