@@ -1,10 +1,15 @@
-class Firestore{
-
-    getDocuments(collection:string){
-
+import {getFirestore,collection, getDocs, doc} from 'firebase/firestore'
+export class Firestore{
+    public constructor(){}
+    async getDocuments(myCollection:string){
+        const firestore = getFirestore();
+        const data = collection(firestore,myCollection);
+        return await getDocs(data);
     }
-    getDocument(id:string){
-
+    async getDocument(collection:string,){
+        //
+        const firestore = getFirestore();
+        
     }
     addDocument(){
         

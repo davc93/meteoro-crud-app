@@ -1,8 +1,10 @@
+
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 // import SignUp from './components/SignUp'
 import './index.css'
+import {Firestore} from './firebase/firestore'
 // import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 // const auth = getAuth();
@@ -25,4 +27,9 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <App />
   </React.StrictMode>
-)
+);
+const documents = new Firestore();
+const data = await documents.getDocuments('projects')
+data.forEach((data)=>{
+  console.log(data.data());
+})
