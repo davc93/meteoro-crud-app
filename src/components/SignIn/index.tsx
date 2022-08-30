@@ -1,12 +1,7 @@
 import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
-import { initializeApp } from "firebase/app";
 import {getAuth, signInWithEmailAndPassword, connectAuthEmulator, createUserWithEmailAndPassword,onAuthStateChanged,signOut} from 'firebase/auth';
-import { firebaseConfig } from '../../../secret';
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-console.log('hello firebase');
 function SignIn(props:any) {
   return (
     <form className="flex flex-col gap-4">

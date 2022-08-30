@@ -1,5 +1,5 @@
 #firebase
-secret.ts
+src/firebase/config.ts
 
 # Logs
 logs
