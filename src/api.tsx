@@ -1,18 +1,18 @@
 import { Project } from "./models/Project";
 import { Service } from "./models/Service";
 
-export function getProjects(){
+export function getProjects():Project[]{
 
 }
-export function getServices(){
+export function getServices():Service[]{
 
 }
 
 // parametros
-export function getProject(id:string){
+export function getProject(id:string):Project{
 
 }
-export function getService(id:string){
+export function getService(id:string):Service{
 
 }
 
