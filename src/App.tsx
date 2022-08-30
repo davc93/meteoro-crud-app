@@ -1,8 +1,17 @@
 
+
+import React from 'react';
 import './App.css';
-function App() {
+import NavBar from './components/NavBar';
+
+function App(props:any) {
   return (
-    <h1>Bienvenido</h1>
+    <React.Fragment>
+      <NavBar>
+
+      </NavBar>
+    </React.Fragment>
+
   )
 }
 
